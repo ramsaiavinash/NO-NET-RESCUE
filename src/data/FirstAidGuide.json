@@ -1,0 +1,94 @@
+{
+  "firstAidTopics": [
+    {
+      "id": "burns",
+      "title": "Burns",
+      "description": "First aid for thermal, chemical, and electrical burns.",
+      "sections": [
+        {
+          "title": "Minor Burns (First-degree and small Second-degree)",
+          "steps": [
+            "Cool the burn. Hold the burned area under cool (not cold) running water for about 10 minutes or until the pain lessens. You can also apply a clean towel dampened with cool water.",
+            "Remove rings or other tight items from the burned area. Try to do this quickly and gently, before the area swells.",
+            "Don't break blisters. Fluid-filled blisters protect against infection. If a blister breaks, clean the area with water and apply an antibiotic ointment.",
+            "Apply lotion. Once a burn is completely cooled, apply a lotion, such as one with aloe vera, or a moisturizer to help prevent drying and provide relief.",
+            "Bandage the burn. Cover the burn with a sterile gauze bandage (not fluffy cotton). Wrap it loosely to avoid putting pressure on burned skin. Bandaging keeps air off the area, reduces pain and protects blistered skin.",
+            "If needed, take an over-the-counter pain reliever, such as ibuprofen, naproxen sodium, or acetaminophen."
+          ],
+          "whenToSeeDoctor": [
+            "If the burn is larger than 3 inches (about 8 centimeters) in diameter.",
+            "If the burn is on the hands, feet, face, groin, buttocks, or a major joint.",
+            "If the person is an infant or an older adult."
+          ]
+        },
+        {
+          "title": "Major Burns (Third-degree)",
+          "steps": [
+            "Call for emergency medical help immediately.",
+            "Don't remove burned clothing. However, do make sure the victim is no longer in contact with smoldering materials or exposed to smoke or heat.",
+            "Don't immerse large severe burns in cold water. Doing so could cause a drop in body temperature (hypothermia) and shock.",
+            "Check for signs of circulation (breathing, coughing or movement). If there is no breathing or other sign of circulation, begin CPR.",
+            "Elevate the burned body part or parts. Raise them above heart level, if possible.",
+            "Cover the area of the burn. Use a cool, moist, sterile bandage; a clean, moist cloth; or a moist towel."
+          ],
+          "caution": "For chemical burns, flush with large amounts of water. For electrical burns, ensure the person is no longer in contact with the electrical source before approaching."
+        }
+      ]
+    },
+    {
+      "id": "cpr",
+      "title": "Cardiopulmonary Resuscitation (CPR)",
+      "description": "CPR can help save a life during a cardiac or breathing emergency. These instructions are for CPR on adults.",
+      "sections": [
+        {
+          "title": "Before You Begin",
+          "steps": [
+            "Check the scene for safety, form an initial impression, and use personal protective equipment (PPE).",
+            "If the person appears unresponsive, CHECK for responsiveness, breathing, life-threatening bleeding or other life-threatening conditions using shout-tap-shout.",
+            "If the person does not respond and is not breathing or is only gasping, CALL 9-1-1 and get equipment, or tell someone to do so. Place the person on their back on a firm, flat surface.",
+            "If the person is responsive and breathing normally, but not fully awake, place them in the recovery position."
+          ]
+        },
+        {
+          "title": "Performing CPR",
+          "steps": [
+            "Give 30 chest compressions. Place your hands, one on top of the other, in the middle of the chest. Use your body weight to help you administer compressions that are at least 2 inches deep and delivered at a rate of 100 to 120 compressions per minute.",
+            "Give 2 breaths. Tilt the head back slightly and lift the chin up. Pinch the nose shut and place your mouth over the person's mouth, forming a complete seal. Blow into the person's mouth to make the chest rise. Give 2 rescue breaths, each lasting about 1 second.",
+            "Continue cycles of 30 chest compressions and 2 rescue breaths until the person begins to breathe or move, an AED is ready to use, or trained medical help arrives."
+          ],
+          "note": "If you are not trained in CPR or are not comfortable giving rescue breaths, provide hands-only CPR. That means uninterrupted chest compressions at a rate of 100 to 120 a minute until paramedics arrive."
+        }
+      ]
+    },
+    {
+      "id": "cuts",
+      "title": "Cuts and Scrapes",
+      "description": "First aid for minor cuts and scrapes.",
+      "sections": [
+        {
+          "title": "Minor Cuts and Scrapes",
+          "steps": [
+            "Stop the bleeding. Apply direct pressure on the cut or wound with a clean cloth, tissue, or piece of gauze.",
+            "Clean the wound. Rinse the wound with water. Keeping the wound under running tap water will reduce the risk of infection. Wash around the wound with soap. But don't get soap in the wound. And don't use hydrogen peroxide or iodine, which can be irritating.",
+            "Apply an antibiotic. Apply a thin layer of an antibiotic cream or ointment to help keep the surface moist and help prevent scarring.",
+            "Cover the wound. Apply a bandage, rolled gauze, or gauze held in place with paper tape. Covering the wound keeps it clean.",
+            "Change the dressing. Do this at least once a day or whenever the bandage becomes wet or dirty.",
+            "Watch for signs of infection. See a doctor if you see signs of infection on the skin or near the wound, such as redness, increasing pain, drainage, warmth, or swelling."
+          ]
+        },
+        {
+          "title": "When to Seek Medical Attention",
+          "steps": [
+            "The wound is deep or the edges are jagged or gaping open.",
+            "The wound is on the face.",
+            "The bleeding won't stop with direct pressure.",
+            "The wound was caused by a dirty or rusty object.",
+            "You have a puncture wound or deep cut and haven't had a tetanus shot in the past 5 years.",
+            "The wound is from an animal or human bite."
+          ]
+        }
+      ]
+    }
+  ]
+}
+
