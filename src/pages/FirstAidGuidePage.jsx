@@ -1,44 +1,101 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import guideData from '../data/FirstAidGuide.json';
+import guideData from '../data/firstaidguide.json';
+
+// Helper for rendering themed info boxes with icons.
+const InfoBox = ({ title, items, icon }) => (
+  <div className="mt-5 p-4 rounded-lg bg-green-50 border border-green-200">
+    <div className="flex items-start space-x-3">
+      <div className="flex-shrink-0 text-green-600 pt-1">
+        {icon}
+      </div>
+      <div>
+        <h4 className="font-bold text-green-800">{title}</h4>
+        <ul className="list-disc list-inside mt-2 space-y-1 text-gray-700 text-justify">
+          {Array.isArray(items) ? items.map((item, index) => (
+            <li key={index}>{item}</li>
+          )) : <li>{items}</li>}
+        </ul>
+      </div>
+    </div>
+  </div>
+);
 
 const FirstAidGuidePage = () => {
-  // Since we import the JSON, we don't need to fetch it.
-  // It's bundled with the app, perfect for offline use.
-  const [data, setData] = useState(guideData);
+  const data = guideData;
 
   return (
-    <div className="p-4 bg-gray-50 min-h-screen">
-      <Link to="/" className="text-blue-500 hover:underline mb-4 inline-block">&larr; Back to Home</Link>
-      <h1 className="text-3xl font-bold mb-6">First Aid Guide</h1>
-      {data && data.firstAidTopics.map(topic => (
-        <div key={topic.id} className="mb-8 bg-white p-6 rounded-lg shadow">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">{topic.title}</h2>
-          <p className="text-gray-600 mb-4">{topic.description}</p>
-          {topic.sections.map((section, index) => (
-            <div key={index} className="ml-4 mb-4">
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">{section.title}</h3>
-              <ul className="list-disc list-inside space-y-2">
-                {section.steps.map((step, stepIndex) => (
-                  <li key={stepIndex} className="text-gray-700">{step}</li>
+    <div className="bg-white min-h-screen font-sans">
+      {/* Native-style Header */}
+      <header className="bg-green-600 text-white shadow-md sticky top-0 z-10">
+        <div className="max-w-4xl mx-auto p-4 flex items-center justify-between">
+          <Link to="/" className="text-white" aria-label="Back to Home">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </Link>
+          <h1 className="text-xl font-bold absolute left-1/2 transform -translate-x-1/2">
+            First Aid Guide
+          </h1>
+          <div />
+        </div>
+      </header>
+
+      {/* Content Area */}
+      <main className="p-4">
+        <p className="text-center text-gray-500 mb-6 -mt-2">
+          Essential steps for common emergencies.
+        </p>
+        
+        <div className="space-y-6">
+          {data && data.firstAidTopics.map(topic => (
+            <div key={topic.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200/80">
+              <header className="p-5 bg-green-50 border-b border-gray-200">
+                <h2 className="text-xl font-bold text-green-800">{topic.title}</h2>
+                {topic.description && <p className="mt-1 text-gray-600 text-justify">{topic.description}</p>}
+              </header>
+
+              <div className="p-5">
+                {topic.sections.map((section, index) => (
+                  <section key={index} className="mb-6 last:mb-0">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3 pb-2 border-b border-gray-200">{section.title}</h3>
+                    
+                    <ul className="list-decimal list-outside ml-5 space-y-3">
+                      {section.steps.map((step, stepIndex) => (
+                        <li key={stepIndex} className="text-gray-700 leading-relaxed pl-2 text-justify">{step}</li>
+                      ))}
+                    </ul>
+
+                    {section.whenToSeeDoctor && (
+                      <InfoBox
+                        title="When to see a doctor:"
+                        items={section.whenToSeeDoctor}
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
+                      />
+                    )}
+
+                    {section.caution && (
+                      <InfoBox
+                        title="Caution:"
+                        items={section.caution}
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>}
+                      />
+                    )}
+
+                    {section.note && (
+                      <InfoBox
+                        title="Note:"
+                        items={section.note}
+                        icon={<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+                      />
+                    )}
+                  </section>
                 ))}
-              </ul>
-              {section.whenToSeeDoctor && (
-                <div className="mt-4 p-3 bg-yellow-100 border-l-4 border-yellow-500 rounded">
-                  <h4 className="font-bold text-yellow-800">When to see a doctor:</h4>
-                  <ul className="list-disc list-inside mt-2 text-yellow-700">
-                    {section.whenToSeeDoctor.map((item, itemIndex) => (
-                      <li key={itemIndex}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {section.caution && <p className="mt-4 p-3 bg-red-100 border-l-4 border-red-500 text-red-700 rounded"><strong>Caution:</strong> {section.caution}</p>}
-              {section.note && <p className="mt-4 p-3 bg-blue-100 border-l-4 border-blue-500 text-blue-700 rounded"><strong>Note:</strong> {section.note}</p>}
+              </div>
             </div>
           ))}
         </div>
-      ))}
+      </main>
     </div>
   );
 };

@@ -1,14 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FeatureTile = ({ to, title, description, icon, color }) => (
+const FeatureTile = ({ to, title, description, icon }) => (
   <Link to={to} className="block group">
-    <div className={`bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl p-6 text-center transform hover:-translate-y-2 transition-all duration-300 ease-in-out border-b-4 ${color}`}>
-      <div className="flex justify-center mb-4">
+    <div className="flex items-center p-4 bg-white group-hover:bg-gray-100 transition-colors duration-150">
+      <div className="flex-shrink-0 bg-green-100 rounded-lg p-3">
         {icon}
       </div>
-      <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+      <div className="flex-grow ml-4">
+        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+        <p className="text-sm text-gray-600">{description}</p>
+      </div>
+      <div className="ml-4 text-gray-400">
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </div>
     </div>
   </Link>
 );
@@ -18,54 +25,52 @@ const HomePage = () => {
     {
       to: '/first-aid',
       title: 'First Aid Guide',
-      description: 'Step-by-step offline guides for emergencies.',
+      description: 'Step-by-step offline guides.',
       icon: (
-        <svg className="w-16 h-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
         </svg>
       ),
-      color: 'border-red-500'
     },
     {
       to: '/siren',
       title: 'Siren',
-      description: 'Activate a loud siren to attract attention.',
+      description: 'Activate a loud siren for attention.',
       icon: (
-        <svg className="w-16 h-16 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
+        <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-2.236 9.168-5.518"></path>
         </svg>
       ),
-      color: 'border-blue-500'
     },
     {
       to: '/contacts',
       title: 'Emergency Contacts',
-      description: 'Quickly access your saved emergency contacts.',
+      description: 'Quickly access saved contacts.',
       icon: (
-        <svg className="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+        <svg className="w-6 h-6 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197m0 0A5.995 5.995 0 0012 12a5.995 5.995 0 00-6.383-5.803M15 21a6 6 0 00-9-5.197"></path>
         </svg>
       ),
-      color: 'border-green-500'
     }
   ];
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4">
-      <header className="text-center mb-12">
-        <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white">No-Net Rescue</h1>
-        <p className="text-lg text-gray-500 dark:text-gray-400 mt-2">Your offline emergency assistant.</p>
-      </header>
-      <main className="w-full max-w-4xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FeatureTile key={index} {...feature} />
-          ))}
-        </div>
-      </main>
+    <div className="bg-gray-50 min-h-screen font-sans">
+      <div className="max-w-md mx-auto pt-12 px-4">
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">No-Net Rescue</h1>
+          <p className="text-gray-600 mt-1">Your offline emergency assistant.</p>
+        </header>
+        <main>
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden divide-y divide-gray-200">
+            {features.map((feature, index) => (
+              <FeatureTile key={index} {...feature} />
+            ))}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
 
 export default HomePage;
-

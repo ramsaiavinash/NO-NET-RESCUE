@@ -6,13 +6,12 @@ const SirenPage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  // Initialize the Audio object once and set it to loop.
-  // This useEffect runs only on component mount.
   useEffect(() => {
+    // Initialize the Audio object and set it to loop.
     audioRef.current = new Audio(sirenSound);
     audioRef.current.loop = true;
 
-    // Cleanup function to pause audio when the component unmounts
+    // Cleanup function to pause audio when the component unmounts.
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -25,32 +24,55 @@ const SirenPage = () => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
+      // The play() method returns a Promise which can be rejected if autoplay is blocked.
       audioRef.current.play().catch(error => {
-        // Autoplay can be blocked by the browser, handle error gracefully
         console.error("Audio play failed:", error);
-        setIsPlaying(false); // Reset state if play fails
+        // Ensure the UI state is correct if play() fails.
+        setIsPlaying(false);
       });
     }
     setIsPlaying(!isPlaying);
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4 relative">
-      <div className="absolute top-4 left-4">
-        <Link to="/" className="text-blue-500 dark:text-blue-400 hover:underline">&larr; Back to Home</Link>
-      </div>
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-8">Siren</h1>
+    <div className="bg-white min-h-screen font-sans flex flex-col">
+      {/* Native-style Header */}
+      <header className="bg-green-600 text-white shadow-md sticky top-0 z-10">
+        <div className="max-w-4xl mx-auto p-4 flex items-center justify-between">
+          <Link to="/" className="text-white" aria-label="Back to Home">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </Link>
+          <h1 className="text-xl font-bold absolute left-1/2 transform -translate-x-1/2">
+            Emergency Siren
+          </h1>
+          <div /> {/* This div helps in centering the title */}
+        </div>
+      </header>
+
+      {/* Content Area */}
+      <main className="flex-grow flex flex-col items-center justify-center p-4 text-center">
+        <p className="text-gray-600 mb-8">
+          In an emergency, press the button to activate a loud siren.
+        </p>
+        
         <button
           onClick={toggleSiren}
-          className={`w-48 h-48 rounded-full text-white font-bold text-2xl flex items-center justify-center transition-all duration-300 ease-in-out shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 ${
-            isPlaying ? 'bg-red-600 hover:bg-red-700 focus:ring-red-400 animate-pulse' : 'bg-green-500 hover:bg-green-600 focus:ring-green-300'
+          className={`w-48 h-48 rounded-full text-white font-bold text-2xl flex items-center justify-center transition-all duration-300 ease-in-out shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-opacity-50 ${
+            isPlaying 
+              ? 'bg-red-600 hover:bg-red-700 focus:ring-red-400 animate-pulse' 
+              : 'bg-green-500 hover:bg-green-600 focus:ring-green-300'
           }`}
+          aria-live="polite"
         >
           {isPlaying ? 'PAUSE' : 'ACTIVATE'}
         </button>
-        <p className="text-gray-500 dark:text-gray-400 mt-8 h-6">{isPlaying ? 'Siren is active. Press to pause.' : 'Press the button to activate the siren.'}</p>
-      </div>
+
+        <p className="text-gray-500 mt-8 h-6">
+          {isPlaying ? 'Siren is active. Press to pause.' : 'Siren is off. Press to activate.'}
+        </p>
+      </main>
     </div>
   );
 };
