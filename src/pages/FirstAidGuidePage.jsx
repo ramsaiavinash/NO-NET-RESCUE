@@ -4,13 +4,13 @@ import guideData from '../data/firstaidguide.json';
 
 // Helper for rendering themed info boxes with icons.
 const InfoBox = ({ title, items, icon }) => (
-  <div className="mt-5 p-4 rounded-lg bg-green-50 border border-green-200">
+  <div className="mt-5 p-4 rounded-lg bg-red-50 border border-red-200">
     <div className="flex items-start space-x-3">
-      <div className="flex-shrink-0 text-green-600 pt-1">
+      <div className="flex-shrink-0 text-red-600 pt-1">
         {icon}
       </div>
       <div>
-        <h4 className="font-bold text-green-800">{title}</h4>
+        <h4 className="font-bold text-red-800">{title}</h4>
         <ul className="list-disc list-inside mt-2 space-y-1 text-gray-700 text-justify">
           {Array.isArray(items) ? items.map((item, index) => (
             <li key={index}>{item}</li>
@@ -25,9 +25,9 @@ const FirstAidGuidePage = () => {
   const data = guideData;
 
   return (
-    <div className="bg-white min-h-screen font-sans">
+    <div className="bg-gray-100 min-h-screen font-sans">
       {/* Native-style Header */}
-      <header className="bg-green-600 text-white shadow-md sticky top-0 z-10">
+      <header className="bg-red-600 text-white shadow-md fixed top-0 left-0 right-0 z-10">
         <div className="max-w-4xl mx-auto p-4 flex items-center justify-between">
           <Link to="/" className="text-white" aria-label="Back to Home">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -42,16 +42,16 @@ const FirstAidGuidePage = () => {
       </header>
 
       {/* Content Area */}
-      <main className="p-4">
-        <p className="text-center text-gray-500 mb-6 -mt-2">
+      <main className="p-4 pt-20">
+        <p className="text-center text-gray-500 mb-6">
           Essential steps for common emergencies.
         </p>
         
         <div className="space-y-6">
           {data && data.firstAidTopics.map(topic => (
-            <div key={topic.id} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200/80">
-              <header className="p-5 bg-green-50 border-b border-gray-200">
-                <h2 className="text-xl font-bold text-green-800">{topic.title}</h2>
+            <div key={topic.id} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+              <header className="p-5 bg-red-50 border-b border-gray-200">
+                <h2 className="text-xl font-bold text-red-800">{topic.title}</h2>
                 {topic.description && <p className="mt-1 text-gray-600 text-justify">{topic.description}</p>}
               </header>
 
